@@ -16,7 +16,7 @@ def create_root():
 
 
 def create_frame():
-    frame = Canvas(root, width=900, height=800, bg="cyan", highlightthickness=0)
+    frame = Canvas(root, width=1200, height=600, bg="cyan", highlightthickness=0)
     frame.grid(row=0, column=0)
 
     return frame
