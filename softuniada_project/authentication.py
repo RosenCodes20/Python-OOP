@@ -3,7 +3,8 @@ from json import loads, dump
 from canvas import root, frame
 from tkinter import Button, Entry
 from PIL import ImageTk, Image
-from display_images import display_image_one, display_image_two, display_image_three, display_image_four
+from display_images import display_image_one, display_image_two, display_image_three, display_image_four, \
+    display_image_five
 
 
 def get_name():
@@ -22,7 +23,7 @@ def delete_all():
 def login_and_registration():
     delete_all()
     frame.create_text(
-        550,
+        650,
         50,
         text="Welcome to my bottle shop!",
         font=("Aerial", 30),
@@ -40,10 +41,10 @@ def login_and_registration():
         command=login
     )
 
-    frame.create_window(550, 150, window=login_button)
+    frame.create_window(650, 150, window=login_button)
 
     frame.create_text(
-        550,
+        650,
         225,
         text="If you don't have an account:",
         font=("Arial", 12),
@@ -62,7 +63,7 @@ def login_and_registration():
     )
 
     frame.create_window(
-        550,
+        650,
         300,
         window=register_button
     )
@@ -79,27 +80,27 @@ def login_and_registration():
     )
 
     frame.create_text(
-        550,
+        650,
         370,
         text="*Notice if you continue as a guest you can only watch and buy nothing!",
         fill="black",
         font=("Arial", 10)
     )
 
-    frame.create_window(550, 425, window=continue_as_a_guest)
+    frame.create_window(650, 425, window=continue_as_a_guest)
 
 
 def register():
     delete_all()
-    frame.create_text(450, 200, text="First name:", fill="black", font=("Arial", 12))
-    frame.create_text(450, 250, text="Last name:", fill="black", font=("Arial", 12))
-    frame.create_text(450, 300, text="Username:", fill="black", font=("Arial", 12))
-    frame.create_text(450, 350, text="Password:", fill="black", font=("Arial", 12))
+    frame.create_text(600, 200, text="First name:", fill="black", font=("Arial", 12))
+    frame.create_text(600, 250, text="Last name:", fill="black", font=("Arial", 12))
+    frame.create_text(600, 300, text="Username:", fill="black", font=("Arial", 12))
+    frame.create_text(600, 350, text="Password:", fill="black", font=("Arial", 12))
 
-    frame.create_window(550, 200, window=f_name_register_fill)
-    frame.create_window(550, 250, window=l_name_register_fill)
-    frame.create_window(550, 300, window=username_register_fill)
-    frame.create_window(550, 350, window=password_register_fill)
+    frame.create_window(700, 200, window=f_name_register_fill)
+    frame.create_window(700, 250, window=l_name_register_fill)
+    frame.create_window(700, 300, window=username_register_fill)
+    frame.create_window(700, 350, window=password_register_fill)
 
     register_button = Button(
         root,
@@ -111,17 +112,16 @@ def register():
         font=("Arial", 12),
         command=add_to_registration_dict
     )
-    frame.create_window(540, 410, window=register_button)
+    frame.create_window(659, 410, window=register_button)
 
 
 def login():
     delete_all()
+    frame.create_text(600, 200, text="Username:", font=("Arial", 12))
+    frame.create_text(600, 230, text="Password:", font=("Arial", 12))
 
-    frame.create_text(500, 200, text="Username:", font=("Arial", 12))
-    frame.create_text(500, 230, text="Password:", font=("Arial", 12))
-
-    frame.create_window(600, 200, window=username_fill)
-    frame.create_window(600, 230, window=password_fill)
+    frame.create_window(700, 200, window=username_fill)
+    frame.create_window(700, 230, window=password_fill)
 
     login_button = Button(
         root,
@@ -133,7 +133,7 @@ def login():
         font=("Arial", 12),
         command=add_to_login_dict
     )
-    frame.create_window(560, 280, window=login_button)
+    frame.create_window(663, 280, window=login_button)
 
     don_t_have_an_account = Button(
         root,
@@ -145,9 +145,9 @@ def login():
         command=register
     )
 
-    frame.create_text(520, 350, text="Don't have an account:", font=("Arial", 12))
+    frame.create_text(630, 343, text="Don't have an account:", font=("Arial", 12))
 
-    frame.create_window(646, 350, window=don_t_have_an_account)
+    frame.create_window(760, 343, window=don_t_have_an_account)
 
 
 def add_to_registration_dict():
@@ -172,7 +172,7 @@ def check_registration(registration_dict):
     for key, value in registration_dict.items():
         if not value.strip():
             frame.create_text(
-                525,
+                663,
                 466,
                 text=f"Please enter something in {key}",
                 fill="red",
@@ -185,7 +185,7 @@ def check_registration(registration_dict):
     for user in users:
         if user["First name"] == registration_dict["First name"]:
             frame.create_text(
-                525,
+                663,
                 466,
                 text=f"First name already taken!",
                 fill="red",
@@ -195,7 +195,7 @@ def check_registration(registration_dict):
 
         elif user["Last name"] == registration_dict["Last name"]:
             frame.create_text(
-                525,
+                663,
                 466,
                 text=f"Last name already taken!",
                 fill="red",
@@ -205,7 +205,7 @@ def check_registration(registration_dict):
 
         elif user["Username"] == registration_dict["Username"]:
             frame.create_text(
-                525,
+                663,
                 466,
                 text=f"Username already taken!",
                 fill="red",
@@ -215,7 +215,7 @@ def check_registration(registration_dict):
 
         elif user["Password"] == registration_dict["Password"]:
             frame.create_text(
-                525,
+                663,
                 466,
                 text=f"Password name already taken!",
                 fill="red",
@@ -234,14 +234,14 @@ def add_to_login_dict():
 
     if check_login(login_dict):
         frame.create_text(
-            560,
+            663,
             380,
             text="You have successfully logged in!!!",
             fill="green",
             font=("Arial", 12)
         )
         frame.create_text(
-            560,
+            663,
             410,
             text="Do you want to go to the shop?",
             fill="black",
@@ -258,7 +258,7 @@ def add_to_login_dict():
             font=("Arial", 12),
             command=pressed_yes_button
         )
-        frame.create_window(480, 460, window=yes_button)
+        frame.create_window(580, 460, window=yes_button)
 
         no_button = Button(
             root,
@@ -270,7 +270,7 @@ def add_to_login_dict():
             font=("Arial", 12),
             command=pressed_no_button
         )
-        frame.create_window(650, 460, window=no_button)
+        frame.create_window(750, 460, window=no_button)
 
 
 def check_login(login_dict):
@@ -278,7 +278,7 @@ def check_login(login_dict):
     for key, value in login_dict.items():
         if not value.strip():
             frame.create_text(
-                540,
+                663,
                 380,
                 text=f"Please enter something in {key}",
                 tags="error",
@@ -294,7 +294,7 @@ def check_login(login_dict):
 
     else:
         frame.create_text(
-            555,
+            663,
             380,
             text=f"Invalid username or password!!!",
             tags="error",
@@ -320,14 +320,14 @@ def pressed_yes_button():
     )
 
     frame.create_text(
-        500,
+        580,
         510,
         text="Enter your budget:",
         fill="black",
         font=("Arial", 12)
     )
 
-    frame.create_window(630, 510, window=budget)
+    frame.create_window(705, 510, window=budget)
 
     enter_the_budget = Button(
         root,
@@ -338,12 +338,13 @@ def pressed_yes_button():
         height=3,
         command=display_budget
     )
-    frame.create_window(588, 560, window=enter_the_budget)
+    frame.create_window(650, 560, window=enter_the_budget)
 
     bottle_one()
     bottle_two()
     bottle_three()
     bottle_four()
+    bottle_five()
 
 
 def bottle_one():
@@ -549,7 +550,7 @@ def bottle_four():
     bottle_four_quantity_text = frame.create_text(
         940,
         330,
-        text=f"Quantity: {bottle_four_quantity}bottles",
+        text=f"Quantity: {bottle_four_quantity} bottles",
         fill="black",
         font=("Arial", 12)
     )
@@ -580,11 +581,73 @@ def bottle_four():
     frame.create_window(940, 450, window=buy_one_button)
 
 
+def bottle_five():
+    global bottle_five_image, bottle_five_price, bottle_five_quantity, bottle_five_price_text, bottle_five_quantity_text
+    bottle_five_image_path = "images/IMG_0681.JPG"
+    original_image = Image.open(bottle_five_image_path)
+    bottle_five_price = 120
+    bottle_five_quantity = 10
+    new_size = (200, 200)
+
+    resized_image = original_image.resize(new_size)
+
+    resized_image = resized_image.rotate(270)
+
+    bottle_five_image = ImageTk.PhotoImage(resized_image)
+
+    frame.create_image(
+        1200,
+        180,
+        image=bottle_five_image
+    )
+
+    bottle_five_price_text = frame.create_text(
+        1200,
+        300,
+        text=f"Price: {bottle_five_price}lv.",
+        fill="black",
+        font=("Arial", 12)
+    )
+
+    bottle_five_quantity_text = frame.create_text(
+        1200,
+        330,
+        text=f"Quantity: {bottle_four_quantity} bottles",
+        fill="black",
+        font=("Arial", 12)
+    )
+
+    buy_one_button = Button(
+        root,
+        fg="white",
+        bg="green",
+        text="Buy one",
+        width=20,
+        height=3,
+        font=("Arial", 12),
+        command=buy_bottle_five
+    )
+
+    description_for_bottle_five = Button(
+        root,
+        fg="white",
+        bg="black",
+        text="Bottle five description",
+        width=20,
+        height=3,
+        font=("Arial", 12),
+        command=bottle_five_description
+    )
+
+    frame.create_window(1200, 380, window=description_for_bottle_five)
+    frame.create_window(1200, 450, window=buy_one_button)
+
+
 def continue_as_a_guests():
     delete_all()
 
     frame.create_text(
-        500,
+        650,
         50,
         text="Welcome to the guest shop!!",
         font=("Arial", 20)
@@ -602,19 +665,20 @@ def continue_as_a_guests():
     )
 
     frame.create_text(
-        500,
+        650,
         450,
         text="If you want to go back to the login page press:",
         fill="black",
         font=("Arial", 12)
     )
 
-    frame.create_window(500, 500, window=back_to_registration_page)
+    frame.create_window(650, 500, window=back_to_registration_page)
 
     display_image_one()
     display_image_two()
     display_image_three()
     display_image_four()
+    display_image_five()
 
 
 def bottle_one_description():
@@ -631,13 +695,13 @@ def bottle_one_description():
     bottle_one_image = ImageTk.PhotoImage(resized_image)
 
     frame.create_image(
-        550,
+        700,
         180,
         image=bottle_one_image
     )
 
     frame.create_text(
-        650,
+        810,
         400,
         text="This is bottle one it's named the pyramid because it has unique blue pyramids."
              "\nIt's like it's made in Egypt."
@@ -656,7 +720,7 @@ def bottle_one_description():
         font=("Arial", 12),
         command=back_to_the_shop
     )
-    frame.create_window(550, 500, window=back_to_the_shop_button)
+    frame.create_window(680, 500, window=back_to_the_shop_button)
 
 
 def bottle_two_descriptions():
@@ -673,13 +737,13 @@ def bottle_two_descriptions():
     bottle_two_image = ImageTk.PhotoImage(resized_image)
 
     frame.create_image(
-        550,
+        700,
         180,
         image=bottle_two_image
     )
 
     frame.create_text(
-        650,
+        830,
         400,
         text="This is bottle two it's named the spring because it's like the spring is coming and it's very beautiful."
              "\nIt's like it's made in a south country where the weather is always good and never rains."
@@ -698,7 +762,7 @@ def bottle_two_descriptions():
         font=("Arial", 12),
         command=back_to_the_shop
     )
-    frame.create_window(550, 500, window=back_to_the_shop_button)
+    frame.create_window(680, 500, window=back_to_the_shop_button)
 
 
 def bottle_three_description():
@@ -715,13 +779,13 @@ def bottle_three_description():
     bottle_three_image = ImageTk.PhotoImage(resized_image)
 
     frame.create_image(
-        550,
+        700,
         180,
         image=bottle_three_image
     )
 
     frame.create_text(
-        650,
+        830,
         400,
         text="This is bottle three it's named Baba Marta because it represents the bulgarian holiday named Baba Marta"
              "\nIt's like it's made in a very very old time and it's like representing the bulgarian traditions."
@@ -740,7 +804,7 @@ def bottle_three_description():
         font=("Arial", 12),
         command=back_to_the_shop
     )
-    frame.create_window(550, 500, window=back_to_the_shop_button)
+    frame.create_window(680, 500, window=back_to_the_shop_button)
 
 
 def bottle_four_description():
@@ -757,13 +821,13 @@ def bottle_four_description():
     bottle_four_image = ImageTk.PhotoImage(resized_image)
 
     frame.create_image(
-        550,
+        695,
         180,
         image=bottle_four_image
     )
 
     frame.create_text(
-        650,
+        830,
         400,
         text="This is bottle four it's named the forest because it represents the forest by it's flowers and animals."
              "\nIt's like it's made in a argentinian region where the forests are everywhere"
@@ -782,7 +846,49 @@ def bottle_four_description():
         font=("Arial", 12),
         command=back_to_the_shop
     )
-    frame.create_window(550, 500, window=back_to_the_shop_button)
+    frame.create_window(680, 500, window=back_to_the_shop_button)
+
+
+def bottle_five_description():
+    delete_all()
+    global bottle_five_image, bottle_five_price, bottle_five_quantity, bottle_five_price_text, bottle_five_quantity_text
+    bottle_five_image_path = "images/IMG_0681.JPG"
+    original_image = Image.open(bottle_five_image_path)
+    new_size = (300, 300)
+
+    resized_image = original_image.resize(new_size)
+
+    resized_image = resized_image.rotate(270)
+
+    bottle_five_image = ImageTk.PhotoImage(resized_image)
+
+    frame.create_image(
+        695,
+        180,
+        image=bottle_five_image
+    )
+
+    frame.create_text(
+        810,
+        400,
+        text="This is bottle five it's called yin and yang because it's black and white colours.\n"
+             "It's like you are in a chinese country where the tradition and symbols are everywhere.\n"
+             "If you are a fan of the chinese symbols and traditions buy one!;)",
+        fill="black",
+        font=("Arial", 15)
+    )
+
+    back_to_the_shop_button = Button(
+        root,
+        fg="white",
+        bg="red",
+        text="Back to the shop",
+        width=20,
+        height=3,
+        font=("Arial", 12),
+        command=back_to_the_shop
+    )
+    frame.create_window(680, 500, window=back_to_the_shop_button)
 
 
 def back_to_the_shop():
@@ -982,6 +1088,53 @@ def buy_bottle_four():
 
         if current_budget > 0:
             current_budget -= bottle_four_price
+            frame.delete(budget_text_id)
+            budget_text_id = frame.create_text(
+                1100,
+                30,
+                text=f"Budget: {current_budget}lv",
+                fill="black",
+                font=("Arial", 12)
+            )
+
+        else:
+            raise SystemExit("You don't have enough money to buy the bottle. Bye for now...")
+
+    else:
+        frame.create_text(
+            1100,
+            30,
+            text="Please enter a budget!!!!",
+            fill="red",
+            font=("Arial", 12),
+            tags="error"
+        )
+
+
+def buy_bottle_five():
+    global bottle_five_price, bottle_five_quantity, bottle_five_quantity_text, current_budget, budget_text_id, budget_dict
+    frame.delete("error")
+    budget_dict = {"Budget": budget.get()}
+    if budget_dict["Budget"].strip():
+        if bottle_five_quantity > 0:
+            bottle_five_quantity -= 1
+            frame.delete(bottle_five_quantity_text)
+            bottle_five_quantity_text = frame.create_text(
+                1200,
+                330,
+                text=f"Quantity: {bottle_five_quantity} bottles",
+                fill="black",
+                font=("Arial", 12)
+            )
+
+        else:
+            raise SystemExit("There is no more bottles. Bye for now..")
+
+        if bottle_five_price > current_budget:
+            raise SystemExit("Price exceeds budget. Program will exit.")
+
+        if current_budget > 0:
+            current_budget -= bottle_five_price
             frame.delete(budget_text_id)
             budget_text_id = frame.create_text(
                 1100,

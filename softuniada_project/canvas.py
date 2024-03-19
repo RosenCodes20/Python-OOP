@@ -6,7 +6,7 @@ def create_root():
 
     root.title("Shop page")
 
-    root.geometry("1200x600")
+    root.geometry("1400x600")
 
     root.resizable(False, False)
 
@@ -16,7 +16,7 @@ def create_root():
 
 
 def create_frame():
-    frame = Canvas(root, width=1200, height=600, bg="cyan", highlightthickness=0)
+    frame = Canvas(root, width=1400, height=600, bg="cyan", highlightthickness=0)
     frame.grid(row=0, column=0)
 
     return frame

@@ -46,7 +46,7 @@ def display_image_one():
 
 
 def bottle_one_description():
-    from authentication import delete_all
+    from authentication import delete_all, bottle_one_description
     global bottle_one_image, bottle_price, bottle_quantity
     delete_all()
     bottle_one_image_path = "images/IMG_0490.JPG"
@@ -60,13 +60,13 @@ def bottle_one_description():
     bottle_one_image = ImageTk.PhotoImage(resized_image)
 
     frame.create_image(
-        550,
+        700,
         180,
         image=bottle_one_image
     )
 
     frame.create_text(
-        650,
+        810,
         400,
         text="This is bottle one it's named the pyramid because it has unique blue pyramids."
              "\nIt's like it's made in Egypt."
@@ -85,7 +85,7 @@ def bottle_one_description():
         font=("Arial", 12),
         command=back_to_the_shop
     )
-    frame.create_window(550, 500, window=back_to_the_shop_button)
+    frame.create_window(680, 500, window=back_to_the_shop_button)
 
 
 def display_image_two():
@@ -138,13 +138,13 @@ def bottle_two_descriptions():
     bottle_two_image = ImageTk.PhotoImage(resized_image)
 
     frame.create_image(
-        550,
+        700,
         180,
         image=bottle_two_image
     )
 
     frame.create_text(
-        650,
+        830,
         400,
         text="This is bottle two it's named the spring because it's like the spring is coming and it's very beautiful."
              "\nIt's like it's made in a south country where the weather is always good and never rains."
@@ -163,7 +163,7 @@ def bottle_two_descriptions():
         font=("Arial", 12),
         command=back_to_the_shop
     )
-    frame.create_window(550, 500, window=back_to_the_shop_button)
+    frame.create_window(680, 500, window=back_to_the_shop_button)
 
 
 def display_image_three():
@@ -222,13 +222,13 @@ def bottle_three_description():
     bottle_three_image = ImageTk.PhotoImage(resized_image)
 
     frame.create_image(
-        550,
+        700,
         180,
         image=bottle_three_image
     )
 
     frame.create_text(
-        650,
+        830,
         400,
         text="This is bottle three it's named Baba Marta because it represents the bulgarian holiday named Baba Marta"
              "\nIt's like it's made in a very very old time and it's like representing the bulgarian traditions."
@@ -247,15 +247,15 @@ def bottle_three_description():
         font=("Arial", 12),
         command=back_to_the_shop
     )
-    frame.create_window(550, 500, window=back_to_the_shop_button)
+    frame.create_window(680, 500, window=back_to_the_shop_button)
 
 
 def display_image_four():
-    global bottle_four_image, bottle_four_price, bottle_four_quantity
+    global bottle_four_image, bottle_four_price
     bottle_four_image_path = "images/IMG_0488.JPG"
     original_image = Image.open(bottle_four_image_path)
     bottle_four_price = 100
-    bottle_four_quantity = 10
+
     new_size = (200, 200)
 
     resized_image = original_image.resize(new_size)
@@ -307,13 +307,13 @@ def bottle_four_description():
     bottle_four_image = ImageTk.PhotoImage(resized_image)
 
     frame.create_image(
-        550,
+        700,
         180,
         image=bottle_four_image
     )
 
     frame.create_text(
-        650,
+        830,
         400,
         text="This is bottle four it's named the forest because it represents the forest by it's flowers and animals."
              "\nIt's like it's made in a argentinian region where the forests are everywhere"
@@ -332,7 +332,91 @@ def bottle_four_description():
         font=("Arial", 12),
         command=back_to_the_shop
     )
-    frame.create_window(550, 500, window=back_to_the_shop_button)
+    frame.create_window(680, 500, window=back_to_the_shop_button)
+
+
+def display_image_five():
+    global bottle_five_image, bottle_five_price
+    bottle_five_image_path = "images/IMG_0681.JPG"
+    original_image = Image.open(bottle_five_image_path)
+    bottle_five_price = 120
+    new_size = (200, 200)
+
+    resized_image = original_image.resize(new_size)
+
+    resized_image = resized_image.rotate(270)
+
+    bottle_five_image = ImageTk.PhotoImage(resized_image)
+
+    frame.create_image(
+        1200,
+        180,
+        image=bottle_five_image
+    )
+
+    frame.create_text(
+        1200,
+        300,
+        text=f"Price: {bottle_five_price}lv.",
+        fill="black",
+        font=("Arial", 12)
+    )
+
+    description_for_bottle_five = Button(
+        root,
+        fg="white",
+        bg="black",
+        text="Bottle five description",
+        width=20,
+        height=3,
+        font=("Arial", 12),
+        command=bottle_five_description
+    )
+
+    frame.create_window(1200, 360, window=description_for_bottle_five)
+
+
+def bottle_five_description():
+    from authentication import delete_all
+    delete_all()
+    global bottle_five_image, bottle_five_price, bottle_five_quantity, bottle_five_price_text, bottle_five_quantity_text
+    bottle_five_image_path = "images/IMG_0681.JPG"
+    original_image = Image.open(bottle_five_image_path)
+    new_size = (300, 300)
+
+    resized_image = original_image.resize(new_size)
+
+    resized_image = resized_image.rotate(270)
+
+    bottle_five_image = ImageTk.PhotoImage(resized_image)
+
+    frame.create_image(
+        695,
+        180,
+        image=bottle_five_image
+    )
+
+    frame.create_text(
+        810,
+        400,
+        text="This is bottle five it's called yin and yang because it's black and white colours.\n"
+             "It's like you are in a chinese country where the tradition and symbols are everywhere.\n"
+             "If you are a fan of the chinese symbols and traditions buy one!;)",
+        fill="black",
+        font=("Arial", 15)
+    )
+
+    back_to_the_shop_button = Button(
+        root,
+        fg="white",
+        bg="red",
+        text="Back to the shop",
+        width=20,
+        height=3,
+        font=("Arial", 12),
+        command=back_to_the_shop
+    )
+    frame.create_window(680, 500, window=back_to_the_shop_button)
 
 
 def back_to_the_shop():
