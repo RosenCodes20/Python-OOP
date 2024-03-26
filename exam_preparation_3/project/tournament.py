@@ -29,7 +29,7 @@ class Tournament:
 
     def add_equipment(self, equipment_type):
         if equipment_type not in self.VALID_EQUIPMENT:
-            raise Exception("Invalid equipment type!")
+            raise ValueError("Invalid equipment type!")
 
         new_equipment = self.VALID_EQUIPMENT[equipment_type]()
         self.equipment.append(new_equipment)
@@ -37,7 +37,7 @@ class Tournament:
 
     def add_team(self, team_type, team_name, country, advantage):
         if team_type not in self.VALID_TEAMS:
-            raise Exception("Invalid team type!")
+            raise ValueError("Invalid team type!")
 
         if len(self.teams) >= self.capacity:
             return "Not enough tournament capacity."
@@ -77,15 +77,14 @@ class Tournament:
         equipment = [e for e in self.equipment if e.__class__.__name__ == equipment_type]
 
         for equipments in equipment:
-            if equipments in self.equipment:
-                equipments.increase_price()
+            equipments.increase_price()
         return f"Successfully changed {len(equipment)}pcs of equipment."
 
     def play(self, team_name1, team_name2):
         team_one = [t for t in self.teams if t.name == team_name1][0]
         team_two = [t for t in self.teams if t.name == team_name2][0]
 
-        if not (team_one.__class__.__name__ == team_two.__class__.__name__):
+        if not team_one.__class__.__name__ == team_two.__class__.__name__:
             raise Exception("Game cannot start! Team types mismatch!")
 
         team_one_sum = team_one.advantage + sum([e.protection for e in team_one.equipment])

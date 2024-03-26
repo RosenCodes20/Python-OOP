@@ -28,7 +28,7 @@ class BaseTeam(ABC):
     
     @country.setter
     def country(self, value):
-        if len(value) < 2:
+        if len(value.strip()) < 2:
             raise ValueError("Team country should be at least 2 symbols long!")
         
         self.__country = value
