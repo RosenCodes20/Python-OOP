@@ -11,6 +11,28 @@ class Quiz:
         self.users = []
         self.quiz = []
 
+    @property
+    def title(self):
+        return self.__title
+
+    @title.setter
+    def title(self, value):
+        if not value.strip():
+            raise ValueError("Please enter some title!!")
+
+        self.__title = value
+
+    @property
+    def description(self):
+        return self.__description
+
+    @description.setter
+    def description(self, value):
+        if not value.strip():
+            raise ValueError("Please enter some description in here!!")
+
+        self.__description = value
+
     def create_quiz(self):
         for quiz in self.quiz:
             if quiz.title == self.title:
